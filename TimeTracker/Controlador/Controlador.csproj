@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\Contexto.cs" />
+    <Compile Include="Migrations\201806181216014_Initial_Migration.cs" />
+    <Compile Include="Migrations\201806181216014_Initial_Migration.Designer.cs">
+      <DependentUpon>201806181216014_Initial_Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +66,11 @@
       <Project>{AE0D23CB-EFC9-4D8D-9FBE-96236833C3D1}</Project>
       <Name>Modelos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806181216014_Initial_Migration.resx">
+      <DependentUpon>201806181216014_Initial_Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
