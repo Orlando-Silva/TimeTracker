@@ -1,40 +1,52 @@
 ﻿#region --Using--
 using Controlador.BaseManager.Interfaces;
+using Controlador.DAL;
 using Modelos.Entidades;
+using Modelos.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 #endregion
 
 namespace Controlador.BaseManager
 {
     public class MembroController : IBaseManager<Membro>
     {
+
+        #region --Atributos--
+        private readonly Contexto contexto;
+        #endregion
+
+        #region --Construtor--
+        public MembroController()
+        {
+            contexto = new Contexto();
+        }
+        #endregion
+
+        #region --IBaseManager--
         public void Atualizar(Membro entidade)
         {
-            throw new NotImplementedException();
+            contexto.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
         }
 
-        public Membro Carregar(int ID)
-        {
-            throw new NotImplementedException();
-        }
+        public Membro Carregar(int ID) => contexto.Membro.Where(_ => _.ID == ID).FirstOrDefault();
 
-        public List<Membro> CarregarTodos()
-        {
-            throw new NotImplementedException();
-        }
+        public List<Membro> CarregarTodos() => contexto.Membro.ToList();
 
         public void Inativar(Membro entidade)
         {
-            throw new NotImplementedException();
+            entidade.Status = Genericos.Status.Inativo;
+            contexto.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
+            contexto.SaveChanges();
         }
 
         public void Inserir(Membro entidade)
         {
-            throw new NotImplementedException();
+            contexto.Membro.Add(entidade);
+            contexto.SaveChanges();
         }
+        #endregion
     }
 }
