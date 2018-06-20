@@ -1,5 +1,6 @@
 ﻿#region --Using--
 using System;
+using System.Collections.Generic;
 #endregion
 
 namespace Modelos.Entidades
@@ -8,8 +9,7 @@ namespace Modelos.Entidades
     {
         #region --Atributos--
         public int ID { get; set; }
-        public DateTime Inicio { get; protected set; }
-        public DateTime Fim { get; protected set; }
+        public List<Periodo> Periodos { get; set; }
         #endregion
 
         #region --Construtor--
