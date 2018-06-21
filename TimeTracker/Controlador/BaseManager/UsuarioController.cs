@@ -2,8 +2,10 @@
 using Controlador.BaseManager.Interfaces;
 using Controlador.DAL;
 using Modelos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 #endregion
 
 namespace Controlador.BaseManager
@@ -25,7 +27,11 @@ namespace Controlador.BaseManager
         #region --IBaseManager--
         public Usuario Carregar(int ID) => contexto.Usuarios.Where(_ => _.ID == ID).FirstOrDefault();
 
+        public Usuario CarregaComPredicato(Expression<Func<Usuario , bool>> predicate) => contexto.Usuarios.Where(predicate).FirstOrDefault();
+
         public List<Usuario> CarregarTodos() => contexto.Usuarios.ToList();
+
+        public List<Usuario> CarregaListaComPredicato(Expression<Func<Usuario , bool>> predicate) => contexto.Usuarios.Where(predicate).ToList();
 
         public void Atualizar(Usuario entidade)
         {

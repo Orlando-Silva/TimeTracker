@@ -10,6 +10,8 @@ namespace BusinessLogic.Services.Interfaces
 
         #region --Métodos--
         void Inserir(Usuario criador, List<Usuario> membros);
+        void Inserir(int ID, List<Usuario> membros);
+        List<Usuario> CarregaMembros(int ID);
         #endregion
 
     }

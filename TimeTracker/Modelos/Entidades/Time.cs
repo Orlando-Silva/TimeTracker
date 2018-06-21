@@ -27,5 +27,10 @@ namespace Modelos.Entidades
         }
         #endregion
 
+        #region --Métodos
+        public void InserirMembros(List<Usuario> membros) => this.Membros.AddRange(membros);
+        
+        #endregion
+
     }
 }

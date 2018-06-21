@@ -4,6 +4,8 @@ using Controlador.BaseManager.Interfaces;
 using Modelos.Entidades;
 using Controlador.DAL;
 using System.Linq;
+using System.Linq.Expressions;
+using System;
 #endregion
 
 namespace Controlador.BaseManager
@@ -25,7 +27,11 @@ namespace Controlador.BaseManager
         #region --IBaseManager--
         public Time Carregar(int ID) => contexto.Times.Where(_ => _.ID == ID).FirstOrDefault();
 
+        public Time CarregaComPredicato(Expression<Func<Time, bool>> predicate) => contexto.Times.Where(predicate).FirstOrDefault();
+
         public List<Time> CarregarTodos() => contexto.Times.ToList();
+
+        public List<Time> CarregaListaComPredicato(Expression<Func<Time,bool>> predicate) => contexto.Times.Where(predicate).ToList();
 
         public void Atualizar(Time entidade)
         {
