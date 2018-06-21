@@ -50,7 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseManager\Interfaces\IBaseManager.cs" />
+    <Compile Include="BaseManager\Interfaces\ITimeController.cs" />
     <Compile Include="BaseManager\Interfaces\IUsuarioController.cs" />
+    <Compile Include="BaseManager\TimeController.cs" />
     <Compile Include="BaseManager\UsuarioController.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="Migrations\201806181216014_Initial_Migration.cs" />

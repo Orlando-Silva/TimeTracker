@@ -8,19 +8,24 @@ namespace Modelos.Entidades
 {
     public class Time
     {
+
         #region --Atributos--
         public int ID { get; set; }
-        public Usuario Criador { get; set; }
-        public List<Usuario> Membros { get; set; }
-        public DateTime Criado { get; set; }
-        Genericos.Status Status { get; set; }
+        public Usuario Criador { get; private set; }
+        public List<Usuario> Membros { get; private set; }
+        public DateTime Criado { get; private set; }
+        public Genericos.Status Status { get; private set; }
         #endregion
 
         #region --Construtor--
-        public Time()
+        public Time(Usuario criador, List<Usuario> membros)
         {
-
+            this.Criador = criador;
+            this.Membros = membros;
+            this.Status = Genericos.Status.Ativo;
+            this.Criado = DateTime.UtcNow;
         }
         #endregion
+
     }
 }
