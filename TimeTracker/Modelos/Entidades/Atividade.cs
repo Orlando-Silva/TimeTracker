@@ -9,6 +9,9 @@ namespace Modelos.Entidades
     {
         #region --Atributos--
         public int ID { get; set; }
+        public string Descricao { get; set; }
+        public DateTime Criada { get; set; }
+        public DateTime Completada { get; set; }
         public List<Periodo> Periodos { get; set; }
         #endregion
 

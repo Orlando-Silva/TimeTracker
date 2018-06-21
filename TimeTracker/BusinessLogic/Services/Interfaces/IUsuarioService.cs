@@ -13,6 +13,7 @@ namespace BusinessLogic.Services.Interfaces
         void Validar(string nome, string login, string senha);
         void Login(string login, string senha);
         Usuario Preparar(string nome, string login, string senha);
+        void Inativar(int ID);
         #endregion
 
     }

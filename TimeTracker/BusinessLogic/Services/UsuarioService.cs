@@ -41,7 +41,7 @@ namespace BusinessLogic.Services
                 throw new Exception("Senha ou usuário errados.");
         }
 
-
+        public void Inativar(int ID) => new UsuarioController().Carregar(ID).AlterarStatus(Genericos.Status.Inativo);          
         #endregion
     }
 }
