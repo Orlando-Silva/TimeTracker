@@ -9,7 +9,6 @@ namespace Controlador.BaseManager.Interfaces
 
         #region --Métodos--
         void Inserir(T entidade);
-        void Inativar(T entidade);
         void Atualizar(T entidade);
         T Carregar(int ID);
         List<T> CarregarTodos();

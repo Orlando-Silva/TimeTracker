@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelos", "Modelos\Modelos.csproj", "{AE0D23CB-EFC9-4D8D-9FBE-96236833C3D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlador", "Controlador\Controlador.csproj", "{9D5E3ABF-578F-4FFD-AF5F-6A1A90CCA7BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "BusinessLogic\Services.csproj", "{FF651647-7A23-4586-BEB3-A81E37090DA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{19C3E684-B06A-4214-9220-D2068C02D511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,19 @@ Global
 		{9D5E3ABF-578F-4FFD-AF5F-6A1A90CCA7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D5E3ABF-578F-4FFD-AF5F-6A1A90CCA7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D5E3ABF-578F-4FFD-AF5F-6A1A90CCA7BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF651647-7A23-4586-BEB3-A81E37090DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF651647-7A23-4586-BEB3-A81E37090DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF651647-7A23-4586-BEB3-A81E37090DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF651647-7A23-4586-BEB3-A81E37090DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19C3E684-B06A-4214-9220-D2068C02D511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19C3E684-B06A-4214-9220-D2068C02D511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19C3E684-B06A-4214-9220-D2068C02D511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19C3E684-B06A-4214-9220-D2068C02D511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD581E26-CE55-4A1A-9B14-A75E50DEBD48}
 	EndGlobalSection
 EndGlobal

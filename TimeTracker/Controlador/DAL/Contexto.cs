@@ -16,9 +16,10 @@ namespace Controlador.DAL
         #endregion
 
         #region --Entidades--
-        public DbSet<Atividade> Atividades { get; set; }
-        public DbSet<Time> Time { get; set; }
-        public DbSet<Membro> Membro { get; set; }
+        public virtual DbSet<Atividade> Atividades { get; set; }
+        public virtual DbSet<Time> Time { get; set; }
+        public virtual DbSet<Membro> Membro { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
         #endregion
 
     }
