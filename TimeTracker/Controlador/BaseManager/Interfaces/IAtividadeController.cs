@@ -4,7 +4,7 @@ using Modelos.Entidades;
 
 namespace Controlador.BaseManager.Interfaces
 {
-    public interface ITimeController<T> where T : Time
+    public interface IAtividadeController<T> where T : Atividade
     {
 
         #region --Métodos--

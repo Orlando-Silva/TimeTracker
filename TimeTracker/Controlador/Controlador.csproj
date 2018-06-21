@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseManager\AtividadeController.cs" />
+    <Compile Include="BaseManager\Interfaces\IAtividadeController.cs" />
     <Compile Include="BaseManager\Interfaces\IBaseManager.cs" />
     <Compile Include="BaseManager\Interfaces\ITimeController.cs" />
     <Compile Include="BaseManager\Interfaces\IUsuarioController.cs" />

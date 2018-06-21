@@ -2,6 +2,7 @@
 using BusinessLogic.Services.Interfaces;
 using Controlador.BaseManager;
 using Modelos.Entidades;
+using Modelos.Enums;
 using System.Collections.Generic;
 #endregion
 
@@ -20,7 +21,9 @@ namespace BusinessLogic.Services
         }
 
         public List<Usuario> CarregaMembros(int ID) => new TimeController().CarregaComPredicato(_ => _.ID == ID).Membros;
-        
+
+        public List<Time> CarregaPorStatus(Genericos.Status status) => new TimeController().CarregaListaComPredicato(_ => _.Status == status);
+
         #endregion
 
     }

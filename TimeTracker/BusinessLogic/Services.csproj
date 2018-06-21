@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AtividadeService.cs" />
+    <Compile Include="Services\Interfaces\IAtividadeService.cs" />
     <Compile Include="Services\Interfaces\ITimeService.cs" />
     <Compile Include="Services\Interfaces\IUsuarioService.cs" />
     <Compile Include="Services\TimeService.cs" />
