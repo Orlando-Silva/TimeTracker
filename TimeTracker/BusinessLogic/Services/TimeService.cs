@@ -19,10 +19,8 @@ namespace BusinessLogic.Services
             new TimeController().Atualizar(time);
         }
 
-        public List<Usuario> CarregaMembros(int ID)
-        {
-
-        }
+        public List<Usuario> CarregaMembros(int ID) => new TimeController().CarregaComPredicato(_ => _.ID == ID).Membros;
+        
         #endregion
 
     }
