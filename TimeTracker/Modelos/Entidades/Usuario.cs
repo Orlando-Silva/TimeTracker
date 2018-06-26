@@ -21,6 +21,11 @@ namespace Modelos.Entidades
         #endregion
 
         #region --Construtor--
+        public Usuario()
+        {
+
+        }
+
         public Usuario(string nome, string login, string senha)
         {
             this.Nome = nome;

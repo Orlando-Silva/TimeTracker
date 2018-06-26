@@ -1,37 +1,35 @@
 ﻿#region --Using--
+using BespokeFusion;
+using BusinessLogic.Services;
+using Modelos.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using WPFView.Privado;
 using WPFView.Publico;
 #endregion
 
 namespace WPFView
 {
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
+
+        #region --Atributos--
+        private readonly UsuarioService usuarioService;
+        #endregion
+
         #region --Construtor--
         public Login()
         {
             InitializeComponent();
             LabelCriarLogin.Content = "Não possuo login";
+            usuarioService = new UsuarioService();
         }
         public Login(string mensagem)
         {
             InitializeComponent();
             LabelCriarLogin.Content = mensagem;
+            usuarioService = new UsuarioService();
         }
         #endregion
 
@@ -44,7 +42,24 @@ namespace WPFView
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                usuarioService.Login(TextBoxLogin.Text, TextBoxSenha.Password);
+                StoreInSession(usuarioService.CarregaPorLogin(TextBoxLogin.Text));
+                new TelaInicial().Show();
+                this.Close();
+            }
+            catch(Exception exception)
+            {
+                MaterialMessageBox.Show(exception.Message, "Erro");
+            }
+        }
+        #endregion
 
+        #region --Métodos--
+        private void StoreInSession(Usuario user)
+        {
+            Application.Current.Properties["_user"] = user;
         }
         #endregion
 

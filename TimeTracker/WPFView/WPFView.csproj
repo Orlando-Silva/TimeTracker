@@ -88,6 +88,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Privado\TelaInicial.xaml.cs">
+      <DependentUpon>TelaInicial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Publico\NovoUsuario.xaml.cs">
       <DependentUpon>NovoUsuario.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Privado\TelaInicial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Publico\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +144,10 @@
     <ProjectReference Include="..\BusinessLogic\Services.csproj">
       <Project>{ff651647-7a23-4586-beb3-a81e37090da2}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelos\Modelos.csproj">
+      <Project>{AE0D23CB-EFC9-4D8D-9FBE-96236833C3D1}</Project>
+      <Name>Modelos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

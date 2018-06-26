@@ -15,6 +15,7 @@ namespace BusinessLogic.Services.Interfaces
         void Atualizar(int ID,string nome, string login, string senha);
         void Atualizar(int ID, Genericos.Status status);
         Usuario Preparar(string nome, string login, string senha);
+        Usuario CarregaPorLogin(string login);
 
         #endregion
 

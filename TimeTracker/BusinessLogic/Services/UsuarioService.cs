@@ -5,6 +5,7 @@ using Helpers;
 using Modelos.Entidades;
 using Modelos.Enums;
 using System;
+using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace BusinessLogic.Services
@@ -49,23 +50,26 @@ namespace BusinessLogic.Services
             if ( String.IsNullOrWhiteSpace(login) || String.IsNullOrWhiteSpace(senha) )
                 throw new Exception("Preencha todos os campos.");
 
-            if( !new UsuarioController().LoginValido(login, Seguranca.GerarHashSHA512(senha)) )
+            if( !usuarioController.LoginValido(login, Seguranca.GerarHashSHA512(senha)) )
                 throw new Exception("Senha ou usuário errados.");
+
         }
 
         public void Atualizar(int ID, Genericos.Status status)
         {
-            var usuario = new UsuarioController().Carregar(ID);
+            var usuario = usuarioController.Carregar(ID);
             usuario.Atualizar(status);
-            new UsuarioController().Atualizar(usuario);
+            usuarioController.Atualizar(usuario);
         }
         
         public void Atualizar(int ID, string nome, string login, string senha)
         {
-            Usuario usuario = new UsuarioController().Carregar(ID);
+            Usuario usuario = usuarioController.Carregar(ID);
             usuario.Atualizar(nome, login, senha);
-            new UsuarioController().Atualizar(usuario);           
-        }          
+            usuarioController.Atualizar(usuario);           
+        }
+
+        public Usuario CarregaPorLogin(string login) => usuarioController.CarregaComPredicato(_ => _.Login == login);
         #endregion
     }
 }
