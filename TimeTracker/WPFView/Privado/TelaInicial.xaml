@@ -16,12 +16,12 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*" />
-            <ColumnDefinition Width="80*" />
+            <ColumnDefinition Width="280*" />
             <ColumnDefinition Width="40*" />
             <ColumnDefinition Width="250*" />
             <ColumnDefinition Width="80*" />
-            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="100*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60*"/>
@@ -34,6 +34,8 @@
             <RowDefinition Height="200*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" x:Name="labelUsuario" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <materialDesign:PackIcon Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDoubleClick="PackIcon_MouseDoubleClick" Kind="Account" ></materialDesign:PackIcon>
+        <materialDesign:PackIcon Grid.Column="5" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Settings" ></materialDesign:PackIcon>
 
     </Grid>
 </Window>

@@ -91,6 +91,9 @@
     <Compile Include="Privado\TelaInicial.xaml.cs">
       <DependentUpon>TelaInicial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Privado\UsuarioPerfil.xaml.cs">
+      <DependentUpon>UsuarioPerfil.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Publico\NovoUsuario.xaml.cs">
       <DependentUpon>NovoUsuario.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Privado\UsuarioPerfil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Publico\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +156,12 @@
       <Project>{AE0D23CB-EFC9-4D8D-9FBE-96236833C3D1}</Project>
       <Name>Modelos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Privado\Configuracoes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
