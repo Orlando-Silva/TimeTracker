@@ -28,6 +28,11 @@ namespace WPFView
             InitializeComponent();
             LabelCriarLogin.Content = "Não possuo login";
         }
+        public Login(string mensagem)
+        {
+            InitializeComponent();
+            LabelCriarLogin.Content = mensagem;
+        }
         #endregion
 
         #region --Eventos--

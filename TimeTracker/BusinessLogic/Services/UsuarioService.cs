@@ -11,19 +11,31 @@ namespace BusinessLogic.Services
 {
     public class UsuarioService : IUsuarioService
     {
+        #region --Atributos--
+        private readonly UsuarioController usuarioController;
+        #endregion
+
+        #region --Construtor--
+        public UsuarioService()
+        {
+            usuarioController = new UsuarioController();
+        }
+        #endregion
+
         #region --IUsuarioService--
         public void Inserir(string nome, string login, string senha)
         {
-            Validar(nome, login, senha);        
-            new UsuarioController().Inserir( Preparar(nome, login, senha));
+            Validar(nome, login, senha);
+            usuarioController.Inserir( Preparar(nome, login, senha));
         }
 
         public void Validar(string nome, string login, string senha)
         {
+
             if (String.IsNullOrWhiteSpace(nome) || String.IsNullOrWhiteSpace(login) || String.IsNullOrWhiteSpace(senha))
                 throw new Exception("Preencha todos os campos.");
 
-            if (new UsuarioController().LoginExiste(login))
+            if (usuarioController.LoginExiste(login))
                 throw new Exception("Este login já existe em nossa base de dados.");
 
             if (senha.Length < 6) 

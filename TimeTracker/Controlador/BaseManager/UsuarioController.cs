@@ -14,11 +14,11 @@ namespace Controlador.BaseManager
     {
 
         #region --Atributos--
-        private readonly Contexto contexto;
+        private static readonly Contexto contexto;
         #endregion
 
         #region --Construtor--
-        public UsuarioController()
+        static UsuarioController()
         {
             contexto = new Contexto();
         }

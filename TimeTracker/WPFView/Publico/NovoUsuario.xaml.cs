@@ -39,7 +39,11 @@ namespace WPFView.Publico
                 {
                     try
                     {
-                        new UsuarioService().Inserir(TextBoxNome.Text, TextBoxLogin.Text, TextBoxSenha.Password);
+                        var usuarioService = new UsuarioService();
+                        usuarioService.Inserir(TextBoxNome.Text, TextBoxLogin.Text, TextBoxSenha.Password);
+                        new Login("Insira seu novo login").Show();
+                        this.Close();
+
                     }
                     catch(Exception erro)
                     {
