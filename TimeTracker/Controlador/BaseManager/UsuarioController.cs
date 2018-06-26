@@ -12,7 +12,6 @@ namespace Controlador.BaseManager
 {
     public class UsuarioController : IBaseManager<Usuario> , IUsuarioController<Usuario>
     {
-
         #region --Atributos--
         private static readonly Contexto contexto;
         #endregion

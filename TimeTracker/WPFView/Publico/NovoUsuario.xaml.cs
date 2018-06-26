@@ -2,31 +2,23 @@
 using BespokeFusion;
 using BusinessLogic.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 #endregion
 
 namespace WPFView.Publico
 {
-    /// <summary>
-    /// Interaction logic for NovoUsuario.xaml
-    /// </summary>
     public partial class NovoUsuario : Window
     {
+
+        #region --Atributos--
+        private readonly UsuarioService usuarioService;
+        #endregion
+
         #region --Construtor--
         public NovoUsuario()
         {
             InitializeComponent();
+            usuarioService = new UsuarioService();
         }
         #endregion
 
@@ -39,7 +31,6 @@ namespace WPFView.Publico
                 {
                     try
                     {
-                        var usuarioService = new UsuarioService();
                         usuarioService.Inserir(TextBoxNome.Text, TextBoxLogin.Text, TextBoxSenha.Password);
                         new Login("Insira seu novo login").Show();
                         this.Close();

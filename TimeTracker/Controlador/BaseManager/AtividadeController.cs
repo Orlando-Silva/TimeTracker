@@ -12,7 +12,6 @@ namespace Controlador.BaseManager
 {
     public class AtividadeController : IBaseManager<Atividade> , IAtividadeController<Atividade>
     {
-
         #region --Atributos--
         private readonly Contexto contexto;
         #endregion
@@ -45,6 +44,5 @@ namespace Controlador.BaseManager
             contexto.SaveChanges();
         }
         #endregion
-
     }
 }

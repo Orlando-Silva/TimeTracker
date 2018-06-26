@@ -11,21 +11,28 @@ namespace BusinessLogic.Services
 {
     public class AtividadeService : IAtividadeService
     {
+        #region --Atributos--
+        private readonly AtividadeController atividadeController;
+        #endregion
+
+        #region --Construtor--
+        public AtividadeService()
+        {
+            atividadeController = new AtividadeController();
+        }
+        #endregion
 
         #region --IAtividadeService--
         public void Inserir(string descricao)
         {
             Validar(descricao);
-            var atividade = new Atividade(descricao);
-            new AtividadeController().Inserir(atividade);               
+            atividadeController.Inserir(new Atividade(descricao));               
         }
 
         public void Inserir(string descricao, DateTime completada, List<Periodo> periodos)
         {
             Validar(descricao,completada);
-            var atividade = new Atividade(descricao,completada,periodos);
-            new AtividadeController().Inserir(atividade);
-
+            atividadeController.Inserir(new Atividade(descricao, completada, periodos));
         }
 
         public void Validar(string descricao)

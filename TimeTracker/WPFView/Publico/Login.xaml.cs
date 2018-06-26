@@ -49,7 +49,7 @@ namespace WPFView
                 new TelaInicial().Show();
                 this.Close();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MaterialMessageBox.Show(exception.Message, "Erro");
             }
@@ -57,10 +57,7 @@ namespace WPFView
         #endregion
 
         #region --Métodos--
-        private void StoreInSession(Usuario user)
-        {
-            Application.Current.Properties["_user"] = user;
-        }
+        private void StoreInSession(Usuario user) => Application.Current.Properties["_user"] = user;       
         #endregion
 
     }

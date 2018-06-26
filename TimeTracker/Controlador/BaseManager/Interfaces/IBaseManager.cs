@@ -8,7 +8,6 @@ namespace Controlador.BaseManager.Interfaces
 {
     public interface IBaseManager<T> where T : class
     {
-
         #region --Métodos--
         void Inserir(T entidade);
         void Atualizar(T entidade);
@@ -17,6 +16,5 @@ namespace Controlador.BaseManager.Interfaces
         List<T> CarregaListaComPredicato(Expression<Func<T, bool>> predicate);
         List<T> CarregarTodos();
         #endregion
-
     }
 }

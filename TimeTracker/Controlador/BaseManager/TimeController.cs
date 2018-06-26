@@ -12,7 +12,6 @@ namespace Controlador.BaseManager
 {
     public class TimeController : IBaseManager<Time>, ITimeController<Time>
     {
-
         #region --Atributos--
         private readonly Contexto contexto;
         #endregion
@@ -45,10 +44,5 @@ namespace Controlador.BaseManager
             contexto.SaveChanges();
         }
         #endregion
-
-        #region --ITimeController--
-
-        #endregion
-
     }
 }
