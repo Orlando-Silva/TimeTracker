@@ -9,11 +9,16 @@ namespace Modelos.Entidades
 
         #region --Atributos--
         public int ID { get; set; }
-        public DateTime Inicio { get; private set; }
-        public DateTime Fim { get; private set; }
+        public DateTime Inicio { get; set; }
+        public DateTime Fim { get; set; }
         #endregion
 
         #region --Construtores--
+        public Periodo()
+        {
+
+        }
+
         public Periodo(DateTime inicio, DateTime fim)
         {
             this.Inicio = inicio;

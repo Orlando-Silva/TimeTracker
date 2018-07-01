@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Modelos.Entidades;
 using Controlador.BaseManager;
 using Helpers;
+using System.Linq;
+using static Modelos.Entidades.Atividade;
 #endregion
 
 namespace BusinessLogic.Services
@@ -23,35 +25,78 @@ namespace BusinessLogic.Services
         #endregion
 
         #region --IAtividadeService--
-        public void Inserir(string descricao)
+
+        #region --Carregar--
+        public Atividade Carrega(int ID) => atividadeController.Carregar(ID);
+
+        public List<Atividade> CarregaAtividadePorUsuario(int usuarioID) => atividadeController.CarregaListaComPredicato(_ => _.Usuario.ID == usuarioID);
+
+        public List<Atividade> CarregaAtividadePorUsuarioStatus(int usuarioID, Atividade.AtividadeStatus status) => atividadeController.CarregaListaComPredicato(_ => _.Usuario.ID == usuarioID && _.Status == status);
+        #endregion
+
+        #region --Inserir--
+        public void Inserir(string titulo, string descricao, int usuarioID)
         {
-            Validar(descricao);
-            atividadeController.Inserir(new Atividade(descricao));               
+            Validar(titulo, descricao, usuarioID);
+            atividadeController.Inserir(Preparar(titulo, descricao, usuarioID));
         }
 
-        public void Inserir(string descricao, DateTime completada, List<Periodo> periodos)
+        public void Validar(string titulo, string descricao, int usuarioID)
         {
-            Validar(descricao,completada);
-            atividadeController.Inserir(new Atividade(descricao, completada, periodos));
-        }
+            if (String.IsNullOrWhiteSpace(titulo))
+                throw new Exception("Uma atividade deve conter título.");
 
-        public void Validar(string descricao)
-        {
             if (String.IsNullOrWhiteSpace(descricao))
-                throw new NullReferenceException("A descrição da atividade não pode ser nula!");
+                throw new Exception("Uma atividade deve conter descrição");
 
-            if (descricao.Length > 128)
-                throw new Exception("O tamanho do campo descrição excedeu os limites");
+            var atividades = CarregaAtividadePorUsuario(usuarioID) as List<Atividade>;
+
+            if (atividades.Any(_ => _.Titulo == titulo))
+                throw new Exception("Não é possível cadastrar duas atividades com o mesmo nome.");
+
         }
 
-        public void Validar(string descricao, DateTime completada)
+
+        public Atividade Preparar(string titulo, string descricao, int usuarioID)
         {
-            Validar(descricao);
-
-            if (DateTimeHelpers.IsDataMaiorQueAtual(completada))
-                throw new Exception("A data em que a atividade foi completada não pode ser maior que a data atual.");
-
+            return new Atividade()
+            {
+                Titulo = titulo,
+                Descricao = descricao,
+                Criada = DateTime.UtcNow,
+                UsuarioID = usuarioID,
+                Status = AtividadeStatus.Pendente
+            };
         }
+        #endregion
+
+        #region --Atualizar--
+        public void Atualizar(int ID, Atividade.AtividadeStatus status)
+        {
+            var atividade = Carrega(ID) as Atividade;
+            atividade.Status = status;
+            atividadeController.Atualizar(atividade);
+        }
+
+        public void Atualizar(int ID, Periodo periodo)
+        {
+            var atividade = Carrega(ID) as Atividade;
+            atividade.Periodos.Add(periodo);
+            atividadeController.Atualizar(atividade);
+        }
+
+        public void Atualizar(int ID, List<Periodo> periodos)
+        {
+            var atividade = Carrega(ID) as Atividade;
+            atividade.Periodos = periodos;
+            atividadeController.Atualizar(atividade);
+        }
+        #endregion
+
+        #region --Outros--
+
+        #endregion
+
         #endregion
 
     }

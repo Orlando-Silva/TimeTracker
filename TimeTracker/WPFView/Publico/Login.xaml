@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFView"
         mc:Ignorable="d"
-        Title="Login" Height="600" Width="600"
+        Title="Login" Height="400" Width="400"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,36 +16,33 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*" />
             <ColumnDefinition Width="200*" />
-            <ColumnDefinition Width="80*" />
-            <ColumnDefinition Width="40*" />
-            <ColumnDefinition Width="250*" />
-            <ColumnDefinition Width="80*" />
-            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="100*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="200*"/>
+            <RowDefinition Height="140*" />
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+
+            <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
-        <materialDesign:Card Grid.Column="3"  Grid.Row="0" >
-            <TextBlock Margin="18px" TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}">Time Tracker</TextBlock>
+        <materialDesign:Card Grid.Column="1"  Grid.Row="0" >
+            <TextBlock Height="50" Margin="40,15,0,0" Style="{DynamicResource MaterialDesignTitleTextBlock}">Time Tracker</TextBlock>
         </materialDesign:Card>
 
-        <materialDesign:PackIcon Grid.Column="2" VerticalAlignment="Center" Grid.Row="1"  Kind="Account" ></materialDesign:PackIcon>
-        <TextBox Grid.Column="3" Grid.Row="1" TextAlignment="Center" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="TextBoxLogin" materialDesign:HintAssist.Hint="Login" />
+        <materialDesign:PackIcon Grid.Column="1" Grid.Row="2" Margin="10,7,0,0"  Kind="Account" ></materialDesign:PackIcon>
+        <TextBox Grid.Column="1" Grid.Row="2" Width="120" Height="26" x:Name="TextBoxLogin" materialDesign:HintAssist.Hint="Login" />
 
-        <materialDesign:PackIcon Grid.Column="2" VerticalAlignment="Center" Grid.Row="2"  Kind="Key" ></materialDesign:PackIcon>
-        <PasswordBox Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Width="120" HorizontalAlignment="Center"  x:Name="TextBoxSenha" materialDesign:HintAssist.Hint="Senha" />
+        <materialDesign:PackIcon Grid.Column="1"  Grid.Row="3" Margin="10,7,0,0" Kind="Key" ></materialDesign:PackIcon>
+        <PasswordBox Grid.Column="1" Grid.Row="3" Width="120" Height="26"  x:Name="TextBoxSenha" materialDesign:HintAssist.Hint="Senha" />
 
-        <Label Grid.Column="3" Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Center" MouseDoubleClick="LabelCriarLogin_MouseDoubleClick" Foreground="#FF25A0DA" x:Name="LabelCriarLogin"></Label>
-        
-        <Button Grid.Column="3" Grid.Row="4"  Width="80" Height="25" VerticalAlignment="Center" Content="Login" x:Name="ButtonLogin" Click="ButtonLogin_Click" />
+        <Label Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  HorizontalAlignment="Center" MouseDoubleClick="LabelCriarLogin_MouseDoubleClick" Foreground="#FF25A0DA" x:Name="LabelCriarLogin"></Label>
+
+        <Button Grid.Column="1" Grid.Row="5"  Width="80" Height="25" Background="#3f51b5" VerticalAlignment="Center" Content="Login" x:Name="ButtonLogin" Click="ButtonLogin_Click" />
 
     </Grid>
 </Window>

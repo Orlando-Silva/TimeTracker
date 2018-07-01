@@ -1,0 +1,59 @@
+﻿<Window x:Class="WPFView.Privado.AtividadeDetalhes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFView.Privado"
+        mc:Ignorable="d"
+        Title="Nova Atividade" Height="800" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="18*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="18*"/>
+        </Grid.RowDefinitions>
+        <StackPanel  Grid.Row="0" Grid.Column="0" Background="#3f51b5">
+            <materialDesign:PackIcon x:Name="Voltar" MouseDoubleClick="Voltar_MouseDoubleClick" Kind="ArrowLeft" Margin="40,0,0,0" Width="40" Height="78" Foreground="White" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="#3f51b5">
+        </StackPanel>
+        <StackPanel Name="Atividade" Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.548,0.5" >
+            <TextBlock x:Name="TextBlockTitulo" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Row="1" HorizontalAlignment="Center" Margin="0 10 0 0"></TextBlock>
+            <ListView>
+                <ListViewItem x:Name="ListItemDescricao" HorizontalAlignment="Center">
+                </ListViewItem>
+                <ListViewItem x:Name="ListItemHoras" HorizontalAlignment="Center">
+                </ListViewItem>
+            </ListView>
+        </StackPanel>
+        <Button x:Name="TrabalharNaAtividade" Grid.Column="1" Grid.Row="1"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                 MouseDoubleClick="TrabalharNaAtividade_MouseDoubleClick"
+                ToolTip="Trabalhar nesta atividade" Margin="376,318,247,318" RenderTransformOrigin="1.018,0.5">
+            <materialDesign:PackIcon
+                    Kind="Alarm"
+                    Height="24"
+                    Width="24" />
+        </Button>
+        <Button x:Name="FinalizarTarefa" Grid.Column="1" Grid.Row="1"
+                MouseDoubleClick="FinalizarTarefa_MouseDoubleClick"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                ToolTip="Finalizar" RenderTransformOrigin="-0.768,0.036" Margin="233,318,390,318" >
+            <materialDesign:PackIcon
+                    Kind="CheckboxMarkedCircle"
+                    Height="24"
+                    Width="24" />
+        </Button>
+    </Grid>
+</Window>

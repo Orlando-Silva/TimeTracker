@@ -52,9 +52,7 @@
     <Compile Include="BaseManager\AtividadeController.cs" />
     <Compile Include="BaseManager\Interfaces\IAtividadeController.cs" />
     <Compile Include="BaseManager\Interfaces\IBaseManager.cs" />
-    <Compile Include="BaseManager\Interfaces\ITimeController.cs" />
     <Compile Include="BaseManager\Interfaces\IUsuarioController.cs" />
-    <Compile Include="BaseManager\TimeController.cs" />
     <Compile Include="BaseManager\UsuarioController.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="Migrations\201806181216014_Initial_Migration.cs" />
@@ -64,6 +62,18 @@
     <Compile Include="Migrations\201806261133380_SevereChanges.cs" />
     <Compile Include="Migrations\201806261133380_SevereChanges.Designer.cs">
       <DependentUpon>201806261133380_SevereChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807011645002_TimeNome.cs" />
+    <Compile Include="Migrations\201807011645002_TimeNome.Designer.cs">
+      <DependentUpon>201807011645002_TimeNome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807011819352_Changes.cs" />
+    <Compile Include="Migrations\201807011819352_Changes.Designer.cs">
+      <DependentUpon>201807011819352_Changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807011917443_morechanges.cs" />
+    <Compile Include="Migrations\201807011917443_morechanges.Designer.cs">
+      <DependentUpon>201807011917443_morechanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +94,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806261133380_SevereChanges.resx">
       <DependentUpon>201806261133380_SevereChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807011645002_TimeNome.resx">
+      <DependentUpon>201807011645002_TimeNome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807011819352_Changes.resx">
+      <DependentUpon>201807011819352_Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807011917443_morechanges.resx">
+      <DependentUpon>201807011917443_morechanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

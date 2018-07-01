@@ -9,11 +9,26 @@ namespace BusinessLogic.Services.Interfaces
     public interface IAtividadeService
     {
 
-        #region --Métodos--
-        void Inserir(string descricao);
-        void Inserir(string descricao, DateTime completada, List<Periodo> periodos);
-        void Validar(string descricao, DateTime completada);
-        void Validar(string descricao);
+        #region --Carregar--
+        Atividade Carrega(int ID);
+        List<Atividade> CarregaAtividadePorUsuario(int usuarioID);
+        List<Atividade> CarregaAtividadePorUsuarioStatus(int usuarioID, Atividade.AtividadeStatus status);
+        #endregion
+
+        #region --Inserir--
+        void Inserir(string titulo, string descricao, int usuarioID);
+        void Validar(string titulo, string descricao, int usuarioID);
+        Atividade Preparar(string titulo, string descricao, int usuarioID);
+        #endregion
+
+        #region --Atualizar--
+        void Atualizar(int ID, Atividade.AtividadeStatus status);
+        void Atualizar(int ID, Periodo periodo);
+        void Atualizar(int ID, List<Periodo> periodos);
+        #endregion
+
+        #region --Outros--
+
         #endregion
 
     }

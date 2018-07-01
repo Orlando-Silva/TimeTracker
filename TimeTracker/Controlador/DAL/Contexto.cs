@@ -17,9 +17,16 @@ namespace Controlador.DAL
 
         #region --Entidades--
         public virtual DbSet<Atividade> Atividades { get; set; }
-        public virtual DbSet<Time> Times { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         #endregion
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Atividade>().HasRequired(a => a.Usuario)
+                .WithMany(u => u.Atividades)
+                .HasForeignKey(a => a.UsuarioID);
+        }
 
     }
 }

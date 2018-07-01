@@ -1,6 +1,8 @@
 ﻿#region --Using--
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 #endregion
 
 namespace Modelos.Entidades
@@ -9,25 +11,26 @@ namespace Modelos.Entidades
     {
         #region --Atributos--
         public int ID { get; set; }
-        public string Descricao { get; private set; }
-        public DateTime Criada { get; private set; }
-        public DateTime Completada { get; private set; }
-        public List<Periodo> Periodos { get; private set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public DateTime Criada { get; set; }
+        public AtividadeStatus Status { get; set; }
+        public List<Periodo> Periodos { get; set; }
+        public int UsuarioID { get; set; }
+        public Usuario Usuario { get; set; }
         #endregion
 
-        #region --Construtores--
-        public Atividade(string descricao)
+        #region --Enums--
+        public enum AtividadeStatus
         {
-            this.Descricao = descricao;
-            this.Criada = DateTime.UtcNow;
-        }
-        public Atividade(string descricao, DateTime completada, List<Periodo> periodos)
-        {
-            this.Descricao = descricao;
-            this.Criada = DateTime.UtcNow;
-            this.Completada = completada;
-            this.Periodos = periodos;
+            [Description("Pendente")]
+            Pendente = 0,
+            [Description("Em Andamento")]
+            EmAndamento = 1,
+            [Description("Concluída")]
+            Concluida = 1
         }
         #endregion
+
     }
 }

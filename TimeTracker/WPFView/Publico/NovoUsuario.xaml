@@ -52,7 +52,7 @@
         <materialDesign:PackIcon Grid.Column="2" VerticalAlignment="Center" Grid.Row="5"  Kind="AccountKey" ></materialDesign:PackIcon>
         <PasswordBox Grid.Column="3" Grid.Row="5" VerticalAlignment="Center" Width="120" HorizontalAlignment="Center"  x:Name="TextBoxConfirmarSenha" materialDesign:HintAssist.Hint="Confirme sua senha" />
 
-        <Button Grid.Column="3" Grid.Row="7"  Width="100" Height="25" VerticalAlignment="Center" Content="Cadastrar" x:Name="ButtonCadastrar" Click="ButtonCadastrar_Click" />
+        <Button Grid.Column="3" Grid.Row="7"  Width="100" Height="25" VerticalAlignment="Center" Background="#3f51b5" Content="Cadastrar" x:Name="ButtonCadastrar" Click="ButtonCadastrar_Click" />
 
     </Grid>
 </Window>

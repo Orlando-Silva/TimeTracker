@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPFView.Privado.NovaAtividade"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFView.Privado"
+        mc:Ignorable="d"
+        Title="Nova Atividade" Height="800" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="18*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="18*"/>
+        </Grid.RowDefinitions>
+        <StackPanel  Grid.Row="0" Grid.Column="0" Background="#3f51b5">
+            <materialDesign:PackIcon Kind="FormatListBulleted" Margin="40,0,0,0" Width="40" Height="78" Foreground="White" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="#3f51b5">
+        </StackPanel>
+        <StackPanel Name="CadastrarAtividade" Grid.Row="1" Grid.Column="1" >
+            <TextBox  Margin="0,100,0,0" Width="220"  x:Name="TextBoxTitulo" materialDesign:HintAssist.Hint="Insira o título da sua atividade" />
+
+            <TextBox Margin="0,20,0,0" x:Name="TextBoxDescricao" 
+                Width="220"
+                TextWrapping="Wrap"
+                VerticalAlignment="Stretch"
+                MinWidth="280"
+                AcceptsReturn="True"
+                VerticalScrollBarVisibility="Auto"
+                SpellCheck.IsEnabled="True"
+                materialDesign:HintAssist.Hint="Descreva sua atividade"
+                Height="80">
+            </TextBox>
+
+            <Button Margin="0,40,0,0"   Width="150" Height="25" VerticalAlignment="Center" Background="#3f51b5" Content="Nova Atividade" x:Name="ButtonCadastrarAtividade" Click="ButtonCadastrarAtividade_Click" />
+
+        </StackPanel>
+    </Grid>
+</Window>
