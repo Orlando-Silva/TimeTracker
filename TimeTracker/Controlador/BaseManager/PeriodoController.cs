@@ -10,37 +10,37 @@ using System.Linq.Expressions;
 
 namespace Controlador.BaseManager
 {
-    public class AtividadeController : IBaseManager<Atividade>
+    public class PeriodoController : IBaseManager<Periodo>
     {
         #region --Atributos--
         private readonly Contexto contexto;
         #endregion
 
         #region --Construtor--
-        public AtividadeController()
+        public PeriodoController()
         {
             contexto = new Contexto();
         }
         #endregion
 
         #region --IBaseManager--
-        public Atividade Carregar(int ID) => contexto.Atividades.Where(_ => _.ID == ID).FirstOrDefault();
+        public Periodo Carregar(int ID) => contexto.Periodos.Where(_ => _.ID == ID).FirstOrDefault();
 
-        public Atividade CarregaComPredicato(Expression<Func<Atividade, bool>> predicate) => contexto.Atividades.Where(predicate).FirstOrDefault();
+        public Periodo CarregaComPredicato(Expression<Func<Periodo, bool>> predicate) => contexto.Periodos.Where(predicate).FirstOrDefault();
 
-        public List<Atividade> CarregarTodos() => contexto.Atividades.ToList();
+        public List<Periodo> CarregarTodos() => contexto.Periodos.ToList();
 
-        public List<Atividade> CarregaListaComPredicato(Expression<Func<Atividade, bool>> predicate) => contexto.Atividades.Where(predicate).ToList();
+        public List<Periodo> CarregaListaComPredicato(Expression<Func<Periodo, bool>> predicate) => contexto.Periodos.Where(predicate).ToList();
 
-        public void Atualizar(Atividade entidade)
+        public void Atualizar(Periodo entidade)
         {
             contexto.Entry(entidade).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();
         }
 
-        public void Inserir(Atividade entidade)
+        public void Inserir(Periodo entidade)
         {
-            contexto.Atividades.Add(entidade);
+            contexto.Periodos.Add(entidade);
             contexto.SaveChanges();
         }
         #endregion

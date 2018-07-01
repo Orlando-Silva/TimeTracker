@@ -18,6 +18,7 @@ namespace Controlador.DAL
         #region --Entidades--
         public virtual DbSet<Atividade> Atividades { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Periodo> Periodos { get; set; }
         #endregion
 
 
@@ -26,6 +27,10 @@ namespace Controlador.DAL
             modelBuilder.Entity<Atividade>().HasRequired(a => a.Usuario)
                 .WithMany(u => u.Atividades)
                 .HasForeignKey(a => a.UsuarioID);
+
+            modelBuilder.Entity<Periodo>().HasRequired(p => p.Atividade)
+                .WithMany(a => a.Periodos)
+                .HasForeignKey(p => p.AtividadeID);
         }
 
     }

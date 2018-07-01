@@ -28,7 +28,9 @@ namespace BusinessLogic.Services.Interfaces
         #endregion
 
         #region --Outros--
-
+        int CalcularDiasGastos(int ID);
+        int CalcularHorasGastas(int ID);
+        int CalcularMinutosGastos(int ID);
         #endregion
 
     }

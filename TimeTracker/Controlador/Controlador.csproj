@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseManager\AtividadeController.cs" />
-    <Compile Include="BaseManager\Interfaces\IAtividadeController.cs" />
     <Compile Include="BaseManager\Interfaces\IBaseManager.cs" />
     <Compile Include="BaseManager\Interfaces\IUsuarioController.cs" />
+    <Compile Include="BaseManager\PeriodoController.cs" />
     <Compile Include="BaseManager\UsuarioController.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="Migrations\201806181216014_Initial_Migration.cs" />
@@ -74,6 +74,14 @@
     <Compile Include="Migrations\201807011917443_morechanges.cs" />
     <Compile Include="Migrations\201807011917443_morechanges.Designer.cs">
       <DependentUpon>201807011917443_morechanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807012130143_AlmostEnding.cs" />
+    <Compile Include="Migrations\201807012130143_AlmostEnding.Designer.cs">
+      <DependentUpon>201807012130143_AlmostEnding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807012145084_brainfart.cs" />
+    <Compile Include="Migrations\201807012145084_brainfart.Designer.cs">
+      <DependentUpon>201807012145084_brainfart.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807011917443_morechanges.resx">
       <DependentUpon>201807011917443_morechanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807012130143_AlmostEnding.resx">
+      <DependentUpon>201807012130143_AlmostEnding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807012145084_brainfart.resx">
+      <DependentUpon>201807012145084_brainfart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

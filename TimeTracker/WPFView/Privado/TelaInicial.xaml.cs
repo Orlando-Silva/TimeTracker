@@ -36,5 +36,11 @@ namespace WPFView.Privado
             new AtividadeDetalhes(atividade).Show();
             Close();
         }
+
+        private void PackIcon_MouseUp_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            new TodasAtividades().Show();
+            Close();
+        }
     }
 }

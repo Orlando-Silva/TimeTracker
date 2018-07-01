@@ -21,26 +21,39 @@ namespace WPFView.Privado
 {
     public partial class AtividadeDetalhes : Window
     {
+
+        private Atividade atividade;
+
         public AtividadeDetalhes(Atividade atividade)
         {
             InitializeComponent();
+            this.atividade = atividade;
             TextBlockTitulo.Text = atividade.Titulo;
             ListItemDescricao.Content = atividade.Descricao;
+            ListItemHoras.Content = $@"Tempo gasto nesta atividade:\n
+                                        Em Dias: { new AtividadeService().CalcularDiasGastos(atividade.ID) }.
+                                        Em Horas: { new AtividadeService().CalcularHorasGastas(atividade.ID) }.
+                                        Em Minutos: { new AtividadeService().CalcularMinutosGastos(atividade.ID) }.";
+
         }
 
         private void TrabalharNaAtividade_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            new Trabalhando(atividade).Show();
+            Close();
         }
 
         private void FinalizarTarefa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            new AtividadeService().Atualizar(atividade.ID, Modelos.Entidades.Atividade.AtividadeStatus.Concluida);
+            new TelaInicial().Show();
+            Close();
         }
 
         private void Voltar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            new TelaInicial().Show();
+            Close();
         }
     }
 }

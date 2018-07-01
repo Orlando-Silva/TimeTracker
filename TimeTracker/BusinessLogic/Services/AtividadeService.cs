@@ -94,7 +94,38 @@ namespace BusinessLogic.Services
         #endregion
 
         #region --Outros--
+        public int CalcularDiasGastos(int ID)
+        {
+            var periodos = new PeriodoService().CarregaPorAtividade(ID) as List<Periodo>;
+            TimeSpan dias = TimeSpan.Zero;
 
+            foreach (Periodo periodo in periodos)
+                dias += periodo.Fim.Subtract(periodo.Inicio);
+
+            return (int)dias.TotalDays;
+
+        }
+
+        public int CalcularHorasGastas(int ID)
+        {
+            var periodos = new PeriodoService().CarregaPorAtividade(ID) as List<Periodo>;
+            TimeSpan horas = TimeSpan.Zero;
+
+            foreach (Periodo periodo in periodos)
+                horas += periodo.Fim.Subtract(periodo.Inicio);
+
+            return (int)horas.TotalHours;
+        }
+        public int CalcularMinutosGastos(int ID)
+        {
+            var periodos = new PeriodoService().CarregaPorAtividade(ID) as List<Periodo>;
+            TimeSpan minutes = TimeSpan.Zero;
+
+            foreach (Periodo periodo in periodos)
+                minutes += periodo.Fim.Subtract(periodo.Inicio);
+
+            return (int)minutes.TotalMinutes;
+        }
         #endregion
 
         #endregion

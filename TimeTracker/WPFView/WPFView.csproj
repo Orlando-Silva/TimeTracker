@@ -91,8 +91,14 @@
     <Compile Include="Privado\NovaAtividade.xaml.cs">
       <DependentUpon>NovaAtividade.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Privado\TodasAtividades.xaml.cs">
+      <DependentUpon>TodasAtividades.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Privado\TelaInicial.xaml.cs">
       <DependentUpon>TelaInicial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Privado\Trabalhando.xaml.cs">
+      <DependentUpon>Trabalhando.xaml</DependentUpon>
     </Compile>
     <Compile Include="Privado\UsuarioPerfil.xaml.cs">
       <DependentUpon>UsuarioPerfil.xaml</DependentUpon>
@@ -141,7 +147,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Privado\TodasAtividades.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Privado\TelaInicial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Privado\Trabalhando.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
