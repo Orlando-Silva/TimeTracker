@@ -35,7 +35,7 @@ namespace WPFView.Privado
         }
         #endregion
 
-        #region--ButtonCadastrarAtividade--
+        #region--ButtonVoltar--
         private void ButtonVoltar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             new TelaInicial().Show();

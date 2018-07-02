@@ -1,59 +1,71 @@
-﻿using BespokeFusion;
+﻿#region --Using--
 using BusinessLogic.Services;
-using MaterialDesignThemes.Wpf;
 using Modelos.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+#endregion
 
 namespace WPFView.Privado
 {
     public partial class AtividadeDetalhes : Window
     {
 
+        #region--Atributos--
         private Atividade atividade;
+        private AtividadeService atividadeService;
+        #endregion
 
+        #region--Construtor--
         public AtividadeDetalhes(Atividade atividade)
         {
             InitializeComponent();
             this.atividade = atividade;
-            TextBlockTitulo.Text = atividade.Titulo;
-            ListItemDescricao.Content = atividade.Descricao;
-            ListItemHoras.Content = $@"Tempo gasto nesta atividade:\n
-                                        Em Dias: { new AtividadeService().CalcularDiasGastos(atividade.ID) }.
-                                        Em Horas: { new AtividadeService().CalcularHorasGastas(atividade.ID) }.
-                                        Em Minutos: { new AtividadeService().CalcularMinutosGastos(atividade.ID) }.";
-
+            atividadeService = new AtividadeService();
+            Page_Load();
         }
+        #endregion
 
+        #region --Page_Load--
+        private void Page_Load()
+        {
+            TextBlockTitulo.Text = atividade.Titulo;
+            ListItemDescricao.Text += atividade.Descricao;
+
+            var calculo = new AtividadeService().CalcularMinutosGastos(atividade.ID);
+            ListItemMinutos.Text += calculo is 0 ? "Menos que um minuto." : ($"{ calculo } Minuto(s). ");
+
+            calculo = new AtividadeService().CalcularHorasGastas(atividade.ID);
+            ListItemHoras.Text += calculo is 0 ? "Menos que uma hora." : ($"{ calculo } Hora(s). ");
+
+            calculo = new AtividadeService().CalcularDiasGastos(atividade.ID);
+            ListItemDias.Text += calculo is 0 ? "Menos que um dia." : ($"{ calculo } Dia(s). ");
+        }
+        #endregion
+
+        #region--TrabalharNaAtividade-
         private void TrabalharNaAtividade_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             new Trabalhando(atividade).Show();
             Close();
         }
+        #endregion
 
+        #region--FinalizarTarefaClick--
         private void FinalizarTarefa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            new AtividadeService().Atualizar(atividade.ID, Modelos.Entidades.Atividade.AtividadeStatus.Concluida);
+            atividadeService.Atualizar(atividade.ID, Atividade.AtividadeStatus.Concluida);
             new TelaInicial().Show();
             Close();
         }
+        #endregion
 
-        private void Voltar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        #region--ButtonVoltar--
+        private void ButtonVoltar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             new TelaInicial().Show();
             Close();
         }
+        #endregion
+
     }
 }

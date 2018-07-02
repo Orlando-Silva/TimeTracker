@@ -15,45 +15,71 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="18*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="18*"/>
-        </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Grid.Column="0" Background="#3f51b5">
-            <materialDesign:PackIcon x:Name="Voltar" MouseDoubleClick="Voltar_MouseDoubleClick" Kind="ArrowLeft" Margin="40,0,0,0" Width="40" Height="78" Foreground="White" />
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Background="#3f51b5">
-        </StackPanel>
-        <StackPanel Name="Atividade" Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.548,0.5" >
-            <TextBlock x:Name="TextBlockTitulo" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Row="1" HorizontalAlignment="Center" Margin="0 10 0 0"></TextBlock>
-            <ListView>
-                <ListViewItem x:Name="ListItemDescricao" HorizontalAlignment="Center">
-                </ListViewItem>
-                <ListViewItem x:Name="ListItemHoras" HorizontalAlignment="Center">
-                </ListViewItem>
-            </ListView>
-        </StackPanel>
-        <Button x:Name="TrabalharNaAtividade" Grid.Column="1" Grid.Row="1"
-                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+
+        <!--#region MenuTopo-->
+        <materialDesign:ColorZone
+          Mode="PrimaryDark"
+          Padding="16"
+          CornerRadius="3"
+          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+          Margin="2">
+            <StackPanel 
+                Orientation="Horizontal">
+                <Button x:Name="ButtonVoltar" ToolTip="Voltar" MouseDoubleClick="ButtonVoltar_MouseDoubleClick">
+                    <materialDesign:PackIcon
+                        Kind="ArrowLeft"
+                        Height="24"
+                        Width="24" />
+                </Button>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="16 0 0 0">
+                    Detalhes da atividade
+                </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <!--#endregion-->
+
+
+        <!--#region Cadastre Uma Atividade Card-->
+        <TextBlock x:Name="TextBlockTitulo" Style="{StaticResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" Margin="0,78,0,0"></TextBlock>
+        <materialDesign:Card
+           x:Name="CardAviso"
+          Background="{DynamicResource PrimaryHueDarkBrush}"
+          Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+          Padding="8"
+             Margin="23,64,34,0"
+          UniformCornerRadius="6"  Height="365">
+            <ListBox Margin="1,-3,-1,1">
+                <TextBlock x:Name="ListItemDescricao" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap">Descrição:</TextBlock>
+                <TextBlock Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" HorizontalAlignment="Center">Tempo Gasto nesta atividade:</TextBlock>
+                <TextBlock x:Name="ListItemDias" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" HorizontalAlignment="Center">Em Dias:</TextBlock>
+                <TextBlock x:Name="ListItemHoras" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" HorizontalAlignment="Center">Em Horas:</TextBlock>
+                <TextBlock x:Name="ListItemMinutos" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" HorizontalAlignment="Center">Em Minutos:</TextBlock>
+            </ListBox>
+        </materialDesign:Card>
+        <!--#endregion-->
+
+
+        <!--#region Botões-->
+        <Button x:Name="TrabalharNaAtividade" 
+                Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
                  MouseDoubleClick="TrabalharNaAtividade_MouseDoubleClick"
-                ToolTip="Trabalhar nesta atividade" Margin="376,318,247,318" RenderTransformOrigin="1.018,0.5">
+                ToolTip="Trabalhar nesta atividade" Height="150" Width="150" Margin="300,350,0,0">
             <materialDesign:PackIcon
                     Kind="Alarm"
-                    Height="24"
-                    Width="24" />
+                    Height="50"
+                    Width="50"  />
         </Button>
-        <Button x:Name="FinalizarTarefa" Grid.Column="1" Grid.Row="1"
+        <Button x:Name="FinalizarTarefa"
                 MouseDoubleClick="FinalizarTarefa_MouseDoubleClick"
-                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                ToolTip="Finalizar" RenderTransformOrigin="-0.768,0.036" Margin="233,318,390,318" >
+                Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                ToolTip="Finalizar" Height="150" Width="150" Margin="-300,350,0,0" >
             <materialDesign:PackIcon
                     Kind="CheckboxMarkedCircle"
-                    Height="24"
-                    Width="24" />
+                    Height="50"
+                    Width="50" />
         </Button>
+        <!--#endregion-->
     </Grid>
 </Window>
