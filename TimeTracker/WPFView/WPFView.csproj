@@ -100,9 +100,6 @@
     <Compile Include="Privado\Trabalhando.xaml.cs">
       <DependentUpon>Trabalhando.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Privado\UsuarioPerfil.xaml.cs">
-      <DependentUpon>UsuarioPerfil.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Publico\NovoUsuario.xaml.cs">
       <DependentUpon>NovoUsuario.xaml</DependentUpon>
     </Compile>
@@ -159,10 +156,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Privado\UsuarioPerfil.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Publico\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,9 +178,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Privado\Configuracoes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

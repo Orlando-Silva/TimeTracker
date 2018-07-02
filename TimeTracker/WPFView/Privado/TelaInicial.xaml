@@ -15,53 +15,77 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="18*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="18*"/>
-        </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Grid.Column="0" Background="#3f51b5">
-            <materialDesign:PackIcon Kind="FormatListBulleted" Margin="40,0,0,0" Width="40" Height="78" Foreground="White" />
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Background="#3f51b5">
-            <Label x:Name="labelUsuario" Margin="490,20,0,0" Width="170" Height="35" Foreground="White" HorizontalAlignment="Center" />
 
-        </StackPanel>
-        <StackPanel x:Name="PanelParteDeBaixo" Grid.Row="1" Grid.Column="0" Background="#3f51b5">
-            <materialDesign:PackIcon Kind="BookPlus" MouseUp="PackIcon_MouseUp" Tag="Nova Atividade" Margin="40,60,0,0" Width="40" Height="70" Foreground="White"  />
-            <materialDesign:PackIcon Kind="Book" Tag="Atividades" MouseUp="PackIcon_MouseUp_1" Margin="40,30,0,0" Width="40" Height="70" Foreground="White"  />
-        </StackPanel>
-        <StackPanel x:Name="ConteudoPagina" Grid.Row="1" Grid.Column="1">
-            <DataGrid x:Name="DataGridAtividades"
-                Margin="0 15 0 0"
+        <!--#region Cadastre Uma Atividade Card-->
+        <materialDesign:Card
+           x:Name="CardAviso"
+          Background="{DynamicResource PrimaryHueDarkBrush}"
+          Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+          Padding="8"
+             Margin="34,38,23,0"
+          UniformCornerRadius="6" Visibility="Hidden" Height="147">
+            <TextBlock
+                TextWrapping="Wrap" Margin="0,0,-4,0" Height="74">
+                Oh oh! Parece que você não tem nenhuma atividade cadastrada ainda. Cadastre atividades clicando no símbolo no canto superior direito da tela!.
+            </TextBlock>
+        </materialDesign:Card>
+        <!--#endregion-->
+
+        <!--#region MenuTopo-->
+        <materialDesign:ColorZone
+          Mode="PrimaryDark"
+          Padding="16"
+          CornerRadius="3"
+          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+          Margin="2">
+            <StackPanel 
+                Orientation="Horizontal">
+                <Button x:Name="ButtonLogout" ToolTip="Logout" MouseDoubleClick="ButtonLogout_MouseDoubleClick">
+                    <materialDesign:PackIcon
+                        Kind="ArrowLeft"
+                        Height="24"
+                        Width="24" />
+                </Button>
+                <TextBlock x:Name="labelUsuario"
+                              VerticalAlignment="Center"
+                              Margin="16 0 0 0">
+                </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <!--#endregion-->
+
+        <!--#region Icones Topo-->
+        <materialDesign:PackIcon x:Name="AdicionarAtividade" Kind="BookmarkPlus" MouseUp="AdicionarAtividade_MouseUp" ToolTip="Nova Atividade" Margin="730 0 0 0" Width="44" Height="70" Foreground="White" HorizontalContentAlignment="Right" />
+        <materialDesign:PackIcon x:Name="VerTodasAtividades" Kind="BookOpen" MouseUp="VerTodasAtividades_MouseUp" ToolTip="Ver Todas Atividades" Margin="670,-1,0,0" Width="40" Height="70" Foreground="White" HorizontalContentAlignment="Right" />
+        <!--#endregion-->
+
+        <!--#region DataGridAtividades-->
+        <DataGrid x:Name="DataGridAtividades"
                   CanUserSortColumns="True"
                   CanUserAddRows="False"
-                  Width="300"
-                  Height="600"
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="8" >
-                <DataGrid.ItemContainerStyle>
-                    <Style TargetType="DataGridRow">
-                        <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
-                    </Style>
-                </DataGrid.ItemContainerStyle>
-                <DataGrid.Columns>
-                    <DataGridTextColumn
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="8" Margin="121,118,135,25"  >
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="Control.MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ItemContainerStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn
                       Binding="{Binding Titulo}"
                       Header="Título"
                       Width="*"
                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                    <materialDesign:MaterialDataGridTextColumn
+                <materialDesign:MaterialDataGridTextColumn
                       Binding="{Binding Descricao}"
                         Width="*"
                       Header="Descrição"
                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--#endregion-->
+
     </Grid>
 </Window>

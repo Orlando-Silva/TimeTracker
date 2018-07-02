@@ -51,7 +51,7 @@ namespace BusinessLogic.Services
 
             var atividades = CarregaAtividadePorUsuario(usuarioID) as List<Atividade>;
 
-            if (atividades.Any(_ => _.Titulo == titulo))
+            if (atividades.Any(_ => _.Titulo == titulo && _.Status == AtividadeStatus.Pendente))
                 throw new Exception("Não é possível cadastrar duas atividades com o mesmo nome.");
 
         }

@@ -37,7 +37,7 @@ namespace WPFView
         private void LabelCriarLogin_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             new NovoUsuario().Show();
-            this.Close();
+            Close();
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace WPFView
                 usuarioService.Login(TextBoxLogin.Text, TextBoxSenha.Password);
                 StoreInSession(usuarioService.CarregaPorLogin(TextBoxLogin.Text));
                 new TelaInicial().Show();
-                this.Close();
+                Close();
             }
             catch (Exception exception)
             {

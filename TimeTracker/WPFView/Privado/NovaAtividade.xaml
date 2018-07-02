@@ -15,36 +15,65 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="18*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="18*"/>
-        </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Grid.Column="0" Background="#3f51b5">
-            <materialDesign:PackIcon Kind="FormatListBulleted" Margin="40,0,0,0" Width="40" Height="78" Foreground="White" />
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Background="#3f51b5">
-        </StackPanel>
-        <StackPanel Name="CadastrarAtividade" Grid.Row="1" Grid.Column="1" >
-            <TextBox  Margin="0,100,0,0" Width="220"  x:Name="TextBoxTitulo" materialDesign:HintAssist.Hint="Insira o título da sua atividade" />
 
-            <TextBox Margin="0,20,0,0" x:Name="TextBoxDescricao" 
-                Width="220"
-                TextWrapping="Wrap"
-                VerticalAlignment="Stretch"
-                MinWidth="280"
-                AcceptsReturn="True"
-                VerticalScrollBarVisibility="Auto"
-                SpellCheck.IsEnabled="True"
-                materialDesign:HintAssist.Hint="Descreva sua atividade"
-                Height="80">
-            </TextBox>
 
-            <Button Margin="0,40,0,0"   Width="150" Height="25" VerticalAlignment="Center" Background="#3f51b5" Content="Nova Atividade" x:Name="ButtonCadastrarAtividade" Click="ButtonCadastrarAtividade_Click" />
 
-        </StackPanel>
+        <!--#region Cadastre Uma Atividade Card-->
+        <materialDesign:Card
+           x:Name="CardAviso"
+          Background="{DynamicResource PrimaryHueDarkBrush}"
+          Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+          Padding="8"
+             Margin="34,38,23,0"
+          UniformCornerRadius="6"  Height="147">
+
+            <ListBox >
+                <TextBlock Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap">
+                A melhor maneira para saber se está obtendo progresso em suas atividades é analisando-as. Cadastre uma nova atividade para que você possa começar a receber feedback
+                </TextBlock>
+                <TextBlock  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap">
+                    As Atividades devem possuir títulos distintos umas das outras! Só  é permitido atividades com o mesmo título quando uma delas já foi concluída.
+                </TextBlock>
+            </ListBox>
+        </materialDesign:Card>
+        <!--#endregion-->
+
+
+        <!--#region MenuTopo-->
+        <materialDesign:ColorZone
+          Mode="PrimaryDark"
+          Padding="16"
+          CornerRadius="3"
+          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+          Margin="2">
+            <StackPanel 
+                Orientation="Horizontal">
+                <Button x:Name="ButtonVoltar" ToolTip="Voltar" MouseDoubleClick="ButtonVoltar_MouseDoubleClick">
+                    <materialDesign:PackIcon
+                        Kind="ArrowLeft"
+                        Height="24"
+                        Width="24" />
+                </Button>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="16 0 0 0">
+                    Cadastre uma atividade
+                </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <!--#endregion-->
+
+        <!--#region Cadastrar Atividade-->
+        <TextBox  Margin="190,252,190,480"  x:Name="TextBoxTitulo" materialDesign:HintAssist.Hint="Insira o título da sua atividade" />
+
+
+
+        <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="186,346,491,379">Descrição</TextBlock>
+        <TextBox  x:Name="TextBoxDescricao"  Style="{StaticResource MaterialDesignTextAreaTextBox}" Margin="190,388,190,0"
+                         VerticalAlignment="Top" Height="100" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  SpellCheck.IsEnabled="True"
+                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextAreaTextBoxEnabledComboBox}" />
+
+        <Button Margin="313,573,313,156" Height="40" VerticalAlignment="Center" Background="#3f51b5" Content="Nova Atividade" x:Name="ButtonCadastrarAtividade" Click="ButtonCadastrarAtividade_Click" />
+        <!--#endregion-->
     </Grid>
 </Window>
