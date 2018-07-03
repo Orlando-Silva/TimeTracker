@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201807012145084_brainfart.Designer.cs">
       <DependentUpon>201807012145084_brainfart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807030020566_final.cs" />
+    <Compile Include="Migrations\201807030020566_final.Designer.cs">
+      <DependentUpon>201807030020566_final.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807012145084_brainfart.resx">
       <DependentUpon>201807012145084_brainfart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807030020566_final.resx">
+      <DependentUpon>201807030020566_final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

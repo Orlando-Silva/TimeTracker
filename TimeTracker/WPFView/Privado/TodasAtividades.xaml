@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFView.Privado"
         mc:Ignorable="d"
-        Title="Home" Height="800" Width="800"
+        Title="Atividades" Height="800" Width="800"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,52 +15,65 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="18*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="18*"/>
-        </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Grid.Column="0" Background="#3f51b5">
-            <materialDesign:PackIcon Kind="FormatListBulleted" Margin="40,0,0,0" Width="40" Height="78" Foreground="White" />
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Background="#3f51b5">
-            <Label x:Name="labelUsuario" Margin="490,20,0,0" Width="170" Height="35" Foreground="White" HorizontalAlignment="Center" />
 
-        </StackPanel>
-        <StackPanel x:Name="PanelParteDeBaixo" Grid.Row="1" Grid.Column="0" Background="#3f51b5">
 
-        </StackPanel>
-        <StackPanel x:Name="ConteudoPagina" Grid.Row="1" Grid.Column="1">
-            <DataGrid x:Name="DataGridAtividades"
-                Margin="0 15 0 0"
+        <!--#region MenuTopo-->
+        <materialDesign:ColorZone
+          Mode="PrimaryDark"
+          Padding="16"
+          CornerRadius="3"
+          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+          Margin="2">
+            <StackPanel 
+                Orientation="Horizontal">
+                <Button x:Name="ButtonVoltar" ToolTip="Voltar" MouseDoubleClick="ButtonVoltar_MouseDoubleClick">
+                    <materialDesign:PackIcon
+                        Kind="ArrowLeft"
+                        Height="24"
+                        Width="24" />
+                </Button>
+                <TextBlock 
+                              VerticalAlignment="Center"
+                              Margin="16 0 0 0"> Todas Atividades
+                </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <!--#endregion-->
+
+
+        <!--#region DataGridAtividades-->
+        <DataGrid x:Name="DataGridAtividades"
                   CanUserSortColumns="True"
                   CanUserAddRows="False"
-                  Width="300"
-                  Height="600"
+                  CanUserDeleteRows="False"
                   AutoGenerateColumns="False"
-                  materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="8" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn
+                  materialDesign:DataGridAssist.CellPadding="13 8 8 8" MouseDoubleClick="DataGridRow_MouseDoubleClick"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="8" Margin="121,118,135,25"  >
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ItemContainerStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn
                       Binding="{Binding Titulo}"
                       Header="Título"
                       Width="*"
                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                    <materialDesign:MaterialDataGridTextColumn
+                <materialDesign:MaterialDataGridTextColumn
                       Binding="{Binding Descricao}"
                         Width="*"
                       Header="Descrição"
                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <materialDesign:MaterialDataGridTextColumn
-                      Binding="{Binding AtividadeStatus}"
-                        Width="*"
+                <materialDesign:MaterialDataGridTextColumn
+                      Binding="{Binding Status}"
+                      Width="*"
                       Header="Status"
                       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--#endregion-->
+
     </Grid>
 </Window>
+    

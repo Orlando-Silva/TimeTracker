@@ -1,63 +1,76 @@
-﻿using BusinessLogic.Services;
-using MaterialDesignThemes.Wpf;
+﻿#region --Using--
+using BusinessLogic.Services;
 using Modelos.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+#endregion
 
 namespace WPFView.Privado
 {
-    /// <summary>
-    /// Lógica interna para Trabalhando.xaml
-    /// </summary>
     public partial class Trabalhando : Window
     {
 
+        #region --Atributos--
         private DateTime inicio;
         private Atividade atividade;
-        private DateTime fim;
+        #endregion
 
+        #region --Construtor--
         public Trabalhando(Atividade atividade)
         {
             this.atividade = atividade;
             InitializeComponent();
         }
+        #endregion
 
+        #region --ButtonFinalizarPeriodo--
         private void FinalizarPeriodo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            fim = DateTime.UtcNow;
-            new PeriodoService().Inserir(inicio, fim, atividade.ID);
+            new PeriodoService().Inserir(inicio, DateTime.UtcNow, atividade.ID);
             new TelaInicial().Show();
             Close();
-
         }
+        #endregion
 
+        #region --TrabalharNaAtividade--
         private void TrabalharNaAtividade_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            TrabalharNaAtividade.Visibility = Visibility.Collapsed;
-            FinalizarPeriodo.Visibility = Visibility.Visible;
             inicio = DateTime.UtcNow;
+            TrocarButtons();
+            SetDispatcherTimer();
+        }
+        #endregion
+
+        #region --DispatchTimer_Tick--
+        private void DispatcherTimer_Tick(object sender, EventArgs e) => FinalizarPeriodo.Content = DateTime.Now.ToString("HH:mm:ss");
+        #endregion
+
+        #region --DispatchTimerSet--
+        private void SetDispatcherTimer()
+        {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
         }
+        #endregion
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        #region--ButtonVoltar--
+        private void ButtonVoltar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            FinalizarPeriodo.Content = DateTime.Now.ToString("HH:mm:ss");
+            new AtividadeDetalhes(atividade,false).Show();
+            Close();
         }
+        #endregion
 
+        #region --Outros--
+        private void TrocarButtons()
+        {
+            TrabalharNaAtividade.Visibility = Visibility.Collapsed;
+            FinalizarPeriodo.Visibility = Visibility.Visible;
+        }
+        #endregion
     }
 }

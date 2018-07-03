@@ -13,14 +13,16 @@ namespace WPFView.Privado
         #region--Atributos--
         private Atividade atividade;
         private AtividadeService atividadeService;
+        private bool IsConcluida;
         #endregion
 
         #region--Construtor--
-        public AtividadeDetalhes(Atividade atividade)
+        public AtividadeDetalhes(Atividade atividade, bool IsConcluida)
         {
             InitializeComponent();
             this.atividade = atividade;
             atividadeService = new AtividadeService();
+            this.IsConcluida = IsConcluida;
             Page_Load();
         }
         #endregion
@@ -39,6 +41,10 @@ namespace WPFView.Privado
 
             calculo = new AtividadeService().CalcularDiasGastos(atividade.ID);
             ListItemDias.Text += calculo is 0 ? "Menos que um dia." : ($"{ calculo } Dia(s). ");
+
+            if(IsConcluida)           
+                TrabalharNaAtividade.Visibility =  FinalizarTarefa.Visibility =  Visibility.Collapsed;
+            
         }
         #endregion
 
@@ -62,7 +68,10 @@ namespace WPFView.Privado
         #region--ButtonVoltar--
         private void ButtonVoltar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            new TelaInicial().Show();
+            if (!IsConcluida)
+                new TelaInicial().Show();
+            else
+                new TodasAtividades().Show();
             Close();
         }
         #endregion

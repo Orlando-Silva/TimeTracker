@@ -26,7 +26,7 @@ namespace Modelos.Entidades
             [Description("Pendente")]
             Pendente = 0,
             [Description("Em Andamento")]
-            EmAndamento = 1,
+            Trabalhando = 1,
             [Description("Concluída")]
             Concluida = 1
         }

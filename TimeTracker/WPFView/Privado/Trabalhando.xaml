@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFView.Privado"
         mc:Ignorable="d"
-        Title="Trabalhando" Height="300" Width="300"
+        Title="Contador" Height="800" Width="800"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,26 +15,70 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" >
     <Grid>
-        <TextBlock x:Name="TextBlock" Style="{StaticResource MaterialDesignTitleTextBlock}" >Clique no botão para começar a contagem</TextBlock>
 
+        <!--#region MenuTopo-->
+        <materialDesign:ColorZone
+          Mode="PrimaryDark"
+          Padding="16"
+          CornerRadius="3"
+          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+          Margin="2">
+            <StackPanel 
+                Orientation="Horizontal">
+                <Button x:Name="ButtonVoltar" ToolTip="Voltar" MouseDoubleClick="ButtonVoltar_MouseDoubleClick">
+                    <materialDesign:PackIcon
+                        Kind="ArrowLeft"
+                        Height="24"
+                        Width="24" />
+                </Button>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="16 0 0 0">
+                    Contador de tempo
+                </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <!--#endregion-->
+
+
+        <!--#region Cadastre Uma Atividade Card-->
+        <materialDesign:Card
+           x:Name="CardAviso"
+          Background="{DynamicResource PrimaryHueDarkBrush}"
+          Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+          Padding="8"
+             Margin="34,40,23,0"
+          UniformCornerRadius="6" Height="233">
+            <ListBox Margin="1,-4,-1,12">
+
+                <TextBlock Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap"> Nesta tela, você pode cronometrar o quanto de tempo gasta nesta atividade! Para isso clique no botão abaixo.</TextBlock>
+                <TextBlock Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap">Logo após o clique, um contador irá guardar todo periódo no qual você está trabalhando nesta atividade.</TextBlock>
+                <TextBlock Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap">Para parar o contador, basta clicar no botão novamente!</TextBlock>
+                <TextBlock Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" TextWrapping="Wrap"> Caso tenha entrado nesta tela por engano, você pode voltar para os detalhes da atividade clicando na flecha no canto superior esquerdo!</TextBlock>
+            </ListBox>
+        </materialDesign:Card>
+        <!--#endregion-->
+
+
+
+        <!--#region ButtonTrabalharNaAtividade-->
         <Button x:Name="TrabalharNaAtividade"
-                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                 MouseDoubleClick="TrabalharNaAtividade_MouseDoubleClick"
-                 ToolTip="Trabalhar nesta atividade"  Height="70" Width="70">
+            MouseDoubleClick="TrabalharNaAtividade_MouseDoubleClick"
+            Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+            ToolTip="Iniciar periódo"  Height="Auto" Width="Auto" Margin="250,351,250,126">
             <materialDesign:PackIcon
                     Kind="Alarm"
-                Height="30" Width="30" Margin="0 0 0 0"
-                    />
+                    Height="100" Width="100" Margin="0 0 0 0" />
         </Button>
+        <!--#endregion-->
 
+        <!--#region ButtonFinalizarPeriodo-->
         <Button x:Name="FinalizarPeriodo"
-                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                 MouseDoubleClick="FinalizarPeriodo_MouseDoubleClick"
-                 ToolTip=""  Height="70" Width="70" Visibility="Collapsed">
-            <materialDesign:PackIcon  
-                    Kind="CheckboxMarkedCircle"
-                Height="30" Width="30" Margin="0 0 0 0"
-                    />
+            MouseDoubleClick="FinalizarPeriodo_MouseDoubleClick"
+            Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+            ToolTip="Clique aqui para finalizar o período"  Height="Auto" Width="Auto" Margin="250,351,250,126" Visibility="Collapsed">
         </Button>
+        <!--#endregion-->
+
     </Grid>
 </Window>

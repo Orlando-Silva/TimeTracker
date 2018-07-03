@@ -56,7 +56,7 @@ namespace WPFView.Privado
         private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var atividade = DataGridAtividades.SelectedItem as Atividade;
-            new AtividadeDetalhes(atividade).Show();
+            new AtividadeDetalhes(atividade,false).Show();
             Close();
         }
         #endregion
